@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(120deg, #fdfbfb, #ebedee);
+  color: #2d3436;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+input {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #dcdde1;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+input:focus {
+  border-color: #3498db;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+button {
+  padding: 12px;
+  font-size: 16px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.login-footer a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

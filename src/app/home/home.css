@@ -1,0 +1,94 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0f7fa, #d1c4e9);
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+}
+
+.home-card {
+  background-color: #ffffff;
+  padding: 60px 50px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s;
+}
+
+.home-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-card h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.button-group {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 130px;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #357ab7;
+}
+
+.btn-secondary {
+  background-color: #7b8b8e;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6b6e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-card {
+    padding: 40px 30px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
