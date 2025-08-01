@@ -1,0 +1,176 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fefefe;
+  color: #2c3e50; /* dark slate blue */
+  padding-top: 60px;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.career-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #34495e; /* dark gray-blue */
+  font-weight: 700;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  color: #34495e;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #2980b9; /* subtle blue underline */
+  padding-bottom: 0.5rem;
+  max-width: max-content;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.program-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-card:hover,
+.program-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.program-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+.program-desc {
+  font-size: 1rem;
+  color: #555555;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.btn-apply {
+  background-color: #2980b9; /* professional blue */
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-apply:hover,
+.btn-apply:focus {
+  background-color: #1c5980;
+  outline: none;
+  text-decoration: none;
+}
+
+.concessions {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-top: 4rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flex container for scholarship heading + icon */
+.concessions-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;  /* spacing between text and image */
+  margin-bottom: 1.5rem;
+}
+
+.concessions-header h3 {
+  color: #2980b9;
+  font-weight: 700;
+  font-size: 1.75rem;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 0.4rem;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.concessions-image {
+  max-width: 120px;  /* controls width */
+  height: auto;
+  display: block;
+}
+
+
+.concessions ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.concessions ul li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.concessions ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2980b9;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 80px;
+  }
+  .career-header {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-card {
+    padding: 1.25rem 1rem;
+  }
+  .program-title {
+    font-size: 1.1rem;
+  }
+  .btn-apply {
+    font-size: 0.9rem;
+  }
+  .concessions h3 {
+    font-size: 1.5rem;
+  }
+}

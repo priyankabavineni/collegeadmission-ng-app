@@ -1,0 +1,22 @@
+<div *ngIf="showNavbar" class="ad-banner">
+  <div class="scroll-text">
+    Admissions are Open! Apply Now for 2025-26 Academic Year.
+  </div>
+</div>
+
+<nav *ngIf="showNavbar" class="navbar">
+  <div class="container">
+    <a class="brand" routerLink="/home">College Admission</a>
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+      <li><a routerLink="/student" routerLinkActive="active">Student</a></li>
+      <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+      <li><a routerLink="/aboutus" routerLinkActive="active">About Us</a></li>
+      <li><a routerLink="/careeroppurtunities" routerLinkActive="active">CareerOppurtunities</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

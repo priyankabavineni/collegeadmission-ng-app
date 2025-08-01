@@ -1,0 +1,114 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Admission Banner */
+.ad-banner {
+  background: linear-gradient(to right, #2a1cf0);
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-text {
+  animation: scroll-left 15s linear infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Navbar Styles */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+.brand:hover {
+  color: #8a41ff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav-links li a:hover {
+  background-color: #aa41ff;
+  color: #fff;
+}
+.nav-links li a.active {
+  background-color: #f5f54c;
+  color: #0a0505;
+}
+
+/* Router Outlet Wrapper */
+.mt-4 {
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links li a {
+    display: block;
+    width: 100%;
+  }
+}
