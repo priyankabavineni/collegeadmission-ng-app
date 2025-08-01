@@ -1,0 +1,118 @@
+<div class="student-applications-container">
+  <h2>📄 Student Applications by ID</h2>
+
+  <div class="input-section">
+    <input type="number" [(ngModel)]="studentId" placeholder="Enter Student ID" />
+    <button (click)="fetchStudentApplications()">Load Applications</button>
+  </div>
+
+  <p class="error" *ngIf="isError">{{ errorMsg }}</p>
+  <p class="loading" *ngIf="loading">Loading applications...</p>
+
+  <div *ngIf="student">
+    <h3>👤 Student Details</h3>
+    <table class="info-table">
+      <tr><th>Student ID</th><td>{{ student.sid }}</td></tr>
+      <tr><th>Name</th><td>{{ student.sname }}</td></tr>
+      <tr><th>Email</th><td>{{ student.email }}</td></tr>
+      <tr><th>10th Marks</th><td>{{ student.tenthMarks }}</td></tr>
+      <tr><th>Inter Marks</th><td>{{ student.interMarks }}</td></tr>
+      <tr><th>Has Entrance Exam</th><td>{{ student.hasEntranceExam ? 'Yes' : 'No' }}</td></tr>
+      <tr><th>Entrance Exam Score</th><td>{{ student.entranceExamScore }}</td></tr>
+    </table>
+
+    <h3>📄 Application Details</h3>
+<table *ngIf="student && student.applications && student.applications.length > 0" class="app-table">
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          
+          <th>Status</th>
+          <th>Entrance Exam Rank</th>
+          <th>Payment Done</th>
+          <th>Reason</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of student.applications">
+          <td>{{ app.applicationId }}</td>
+          
+          <td>
+            <span
+              [ngClass]="{
+                'status-badge status-approved': app.status === 'APPROVED',
+                'status-badge status-rejected': app.status === 'REJECTED',
+                'status-badge status-pending': app.status === 'PENDING'
+              }">
+              {{ app.status }}
+            </span>
+          </td>
+          <td>{{ app.entranceExamRank }}</td>
+          <td>{{ app.paymentDone ? 'Yes' : 'No' }}</td>
+          <td>{{ app.reason || '—' }}</td>
+          <td>
+            <button (click)="openReasonPopup(app.applicationId, 'APPROVE')" [disabled]="app.status === 'APPROVED'">Approve</button>
+            <button (click)="openReasonPopup(app.applicationId, 'REJECT')" [disabled]="app.status === 'REJECTED'">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Reason Popup -->
+  <div *ngIf="showReasonPopup" class="popup-backdrop">
+    <div class="popup-content">
+      <h3>{{ reasonAction === 'APPROVE' ? 'Approve' : 'Reject' }} Application</h3>
+      <textarea [(ngModel)]="reasonText" placeholder="Enter reason here..."></textarea>
+      <div class="popup-buttons">
+        <button (click)="submitReason()">Submit</button>
+        <button (click)="closeReasonPopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Applications Section -->
+  <div class="all-applications-section">
+    <h2>📋 All Applications</h2>
+    <button (click)="fetchAllApplications()">Load All Applications</button>
+
+    <div *ngIf="allApplicationsLoading">Loading all applications...</div>
+    <p class="error" *ngIf="allApplicationsError">{{ allApplicationsError }}</p>
+
+    <table *ngIf="allApplications.length > 0" class="app-table center-table">
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Student ID</th>
+          
+          <th>Status</th>
+          <th>Entrance Exam Rank</th>
+          <th>Payment Done</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of allApplications">
+          <td>{{ app.applicationId }}</td>
+          <td>{{ app.sid }}</td>
+          
+          <td>
+            <span
+              [ngClass]="{
+                'status-badge status-approved': app.status === 'APPROVED',
+                'status-badge status-rejected': app.status === 'REJECTED',
+                'status-badge status-pending': app.status === 'PENDING'
+              }"
+            >
+              {{ app.status }}
+            </span>
+          </td>
+          <td>{{ app.entranceExamRank }}</td>
+          <td>{{ app.paymentDone ? 'Yes' : 'No' }}</td>
+          <td>{{ app.reason || '—' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

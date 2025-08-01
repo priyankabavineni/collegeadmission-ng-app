@@ -1,0 +1,48 @@
+<div class="register-container">
+  <h2>Register</h2>
+  
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+
+    <!-- Username -->
+    <label>Username:</label>
+<input type="text" formControlName="username"><br/>
+<div *ngIf="(registerForm.controls.username.dirty || registerForm.controls.username.touched) && registerForm.controls.username.invalid">
+  <div *ngIf="registerForm.controls.username.errors?.['required']">Username Required</div>
+  <div *ngIf="registerForm.controls.username.errors?.['invalidUsername']">
+    Username should be minimum 5 characters and contain only letters and numbers.
+  </div>
+</div>
+
+
+    <!-- Email -->
+    <label>Email:</label>
+    <input type="email" formControlName="email"><br/>
+    <div *ngIf="(registerForm.controls.email.dirty || registerForm.controls.email.touched) && registerForm.controls.email.invalid">
+      <div *ngIf="registerForm.controls.email.errors?.['required']">Email Required</div>
+      <div *ngIf="registerForm.controls.email.errors?.['email']">Enter a valid email</div>
+      <div *ngIf="registerForm.controls.email.errors?.['invalidGmail']">Email must be a valid gmail.com address</div>
+    </div>
+
+    <!-- Password -->
+    <label>Password:</label>
+    <input type="password" formControlName="password"><br/>
+    <div *ngIf="(registerForm.controls.password.dirty || registerForm.controls.password.touched) && registerForm.controls.password.invalid">
+      <div *ngIf="registerForm.controls.password.errors?.['required']">Password Required</div>
+      <div *ngIf="registerForm.controls.password.errors?.['strongPassword']">
+        Password must be at least 8 characters, include uppercase letter, number, and special character.
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <label>Confirm Password:</label>
+    <input type="password" formControlName="confirmPassword"><br/>
+    <div *ngIf="(registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched) && registerForm.controls.confirmPassword.invalid">
+      <div *ngIf="registerForm.controls.confirmPassword.errors?.['required']">Confirm Password Required</div>
+    </div>
+    <div *ngIf="passwordsDoNotMatch">
+      <span class="error">Passwords do not match.</span>
+    </div>
+
+    <input type="submit" value="Register">
+  </form>
+</div>
