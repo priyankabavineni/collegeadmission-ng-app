@@ -1,0 +1,116 @@
+/* ===== Container Centering ===== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f0f4ff, #ffffff, #f0f4ff);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Card ===== */
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeInUp 0.8s ease;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Header ===== */
+.login-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.login-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0a1f44;
+}
+.login-header p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ===== Inputs ===== */
+form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccd6f6;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+form input:focus {
+  border-color: #4364f7;
+  box-shadow: 0 0 8px rgba(67, 100, 247, 0.4);
+}
+
+/* ===== Button ===== */
+form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(90deg, #0a1f44, #4364f7);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  background: linear-gradient(90deg, #4364f7, #0a1f44);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(67, 100, 247, 0.4);
+}
+
+/* ===== Footer ===== */
+.login-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+.login-footer p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.login-footer a {
+  color: #4364f7;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+}
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+

@@ -1,0 +1,114 @@
+/* Background */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a1f44, #4364f7, #6fb1fc);
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card */
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 380px;
+  animation: fadeInUp 0.8s ease;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.admin-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+.login-header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0a1f44;
+}
+.login-header p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #ccd6f6;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+form input:focus {
+  border-color: #4364f7;
+  box-shadow: 0 0 8px rgba(67, 100, 247, 0.4);
+}
+
+/* Error Messages */
+.error-text {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(90deg, #0a1f44, #4364f7);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  background: linear-gradient(90deg, #4364f7, #0a1f44);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(67, 100, 247, 0.4);
+}
+form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+}

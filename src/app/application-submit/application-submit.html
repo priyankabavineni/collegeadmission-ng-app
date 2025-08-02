@@ -1,0 +1,107 @@
+<div class="application-container">
+  <div class="application-card">
+    <h2>🎓 Submit Your Application</h2>
+
+    <form (ngSubmit)="submitApplication()" #appForm="ngForm" novalidate>
+
+      <!-- Program -->
+      <div class="form-group">
+        <label for="program">Program Name:</label>
+        <select
+          id="program"
+          name="program"
+          [(ngModel)]="application.program"
+          (change)="onProgramChange()"
+          required
+          #programInput="ngModel"
+        >
+          <option value="" disabled>Select Program</option>
+          <option *ngFor="let prog of programs" [value]="prog">{{ prog }}</option>
+        </select>
+        <div *ngIf="programInput.invalid && programInput.touched" class="error-text">
+          Program Name is required.
+        </div>
+      </div>
+
+      <!-- Department -->
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <select
+          id="department"
+          name="department"
+          [(ngModel)]="application.department"
+          required
+          #deptInput="ngModel"
+        >
+          <option value="" disabled>Select Department</option>
+          <option *ngFor="let dept of availableDepartments" [value]="dept">{{ dept }}</option>
+        </select>
+        <div *ngIf="deptInput.invalid && deptInput.touched" class="error-text">
+          Department is required.
+        </div>
+      </div>
+
+      <!-- Entrance Exam -->
+      <div class="form-group">
+        <label for="entranceExam">Entrance Exam:</label>
+        <select
+          id="entranceExam"
+          name="entranceExam"
+          [(ngModel)]="application.entranceExam"
+          required
+          #examInput="ngModel"
+        >
+          <option value="" disabled>Select</option>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+        <div *ngIf="examInput.invalid && examInput.touched" class="error-text">
+          Entrance Exam selection is required.
+        </div>
+      </div>
+
+      <!-- Entrance Exam Score -->
+      <div class="form-group" *ngIf="application.entranceExam === 'YES'">
+        <label for="entranceExamScore">Entrance Exam Score:</label>
+        <input
+          type="number"
+          id="entranceExamScore"
+          name="entranceExamScore"
+          [(ngModel)]="application.entranceExamScore"
+          min="0"
+          max="100"
+          required
+          #scoreInput="ngModel"
+        />
+        <div *ngIf="scoreInput.invalid && scoreInput.touched" class="error-text">
+          <small *ngIf="scoreInput.errors?.['required']">Score is required.</small>
+          <small *ngIf="scoreInput.errors?.['min'] || scoreInput.errors?.['max']">
+            Score must be between 0 and 100.
+          </small>
+        </div>
+      </div>
+
+      <!-- Payment Done -->
+      <div class="form-group checkbox-group">
+        <label>
+          <input
+            type="checkbox"
+            id="paymentDone"
+            name="paymentDone"
+            [(ngModel)]="application.paymentDone"
+          />
+          Payment Done
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="appForm.invalid">
+        Submit Application
+      </button>
+    </form>
+
+    <div *ngIf="submissionSuccess" class="success-text">
+      ✅ Your application has been submitted successfully!
+    </div>
+  </div>
+</div>
