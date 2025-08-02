@@ -15,7 +15,7 @@
           required
           #programInput="ngModel"
         >
-          <option value="" disabled selected>Select Program</option>
+          <option value="" disabled>Select Program</option>
           <option *ngFor="let prog of programs" [value]="prog">{{ prog }}</option>
         </select>
         <div *ngIf="programInput.invalid && programInput.touched" class="error-text">
@@ -33,7 +33,7 @@
           required
           #deptInput="ngModel"
         >
-          <option value="" disabled selected>Select Department</option>
+          <option value="" disabled>Select Department</option>
           <option *ngFor="let dept of availableDepartments" [value]="dept">{{ dept }}</option>
         </select>
         <div *ngIf="deptInput.invalid && deptInput.touched" class="error-text">
@@ -49,11 +49,15 @@
           name="entranceExam"
           [(ngModel)]="application.entranceExam"
           required
+          #examInput="ngModel"
         >
           <option value="" disabled>Select</option>
           <option value="YES">YES</option>
           <option value="NO">NO</option>
         </select>
+        <div *ngIf="examInput.invalid && examInput.touched" class="error-text">
+          Entrance Exam selection is required.
+        </div>
       </div>
 
       <!-- Entrance Exam Score -->
@@ -67,7 +71,14 @@
           min="0"
           max="100"
           required
+          #scoreInput="ngModel"
         />
+        <div *ngIf="scoreInput.invalid && scoreInput.touched" class="error-text">
+          <small *ngIf="scoreInput.errors?.['required']">Score is required.</small>
+          <small *ngIf="scoreInput.errors?.['min'] || scoreInput.errors?.['max']">
+            Score must be between 0 and 100.
+          </small>
+        </div>
       </div>
 
       <!-- Payment Done -->

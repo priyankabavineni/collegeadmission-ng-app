@@ -1,9 +1,37 @@
-<!-- <p>application-status works!</p>
-<h2>Application Status</h2>
-<ul>
-  <li *ngFor="let app of applications">
-    ID: {{app.applicationId}} |
-    Program: {{app.programName}} |
-    Status: {{app.status}}
-  </li>
-</ul> -->
+<div class="status-container">
+
+  <!-- Login Form -->
+  <div *ngIf="!isAuthenticated" class="login-section">
+    <h2>🔑 Admin Login</h2>
+    <form (ngSubmit)="login()">
+      <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required />
+      <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
+
+  <!-- Status Tables -->
+  <div *ngIf="isAuthenticated">
+    <h2>📋 Application Status</h2>
+
+    <div *ngIf="isLoading">Loading applications...</div>
+
+ 
+    <div *ngIf="approvedList.length > 0">
+      <h3 class="approved-title">✅ Approved Applications</h3>
+    </div>
+
+    
+    <div *ngIf="rejectedList.length > 0">
+      <h3 class="rejected-title">❌ Rejected Applications</h3>
+     
+    </div>
+
+ 
+    <div *ngIf="!isLoading && approvedList.length === 0 && rejectedList.length === 0">
+      No applications found.
+    </div>
+  </div>
+
+</div>
