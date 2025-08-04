@@ -6,10 +6,11 @@
 }
 body {
   font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(135deg, #eef2f3, #8e9eab); /* soft professional gradient */
+  background: #f5f7fa;
   color: #222;
   line-height: 1.6;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 /* ===== Container ===== */
@@ -22,46 +23,85 @@ body {
 /* ===== Hero Section ===== */
 .aboutus-hero {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #fff;
   padding: 0 1rem;
-  background: linear-gradient(120deg, #667eea, #764ba2); /* cool gradient */
+  background: linear-gradient(120deg, #0a1f44, #4364f7, #6fb1fc);
+  background-size: 300% 300%;
+  animation: heroGradient 15s ease infinite;
+  overflow: hidden;
+  background-attachment: fixed; /* Parallax effect */
+}
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.aboutus-hero .hero-text {
-  max-width: 700px;
-  transition: color 0.3s ease, transform 0.3s ease;
+/* Floating sparkles */
+.aboutus-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: sparkleMove 20s linear infinite;
+}
+@keyframes sparkleMove {
+  from { transform: translate(0,0); }
+  to { transform: translate(-50px,-50px); }
 }
 
-.aboutus-hero h1 {
+.hero-text {
+  max-width: 750px;
+  z-index: 2;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+.hero-text h1 {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 3.5rem;
   margin-bottom: 0.4rem;
   letter-spacing: 0.8px;
-  color: #fff;
+  background: linear-gradient(90deg, #ffd166, #ffe89e, #ffd166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: goldShimmer 4s linear infinite;
 }
-
-.aboutus-hero p {
+@keyframes goldShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.hero-text p {
   font-size: 1.25rem;
-  font-weight: 400;
-  color: #e0e0e0;
-  letter-spacing: 0.3px;
-  margin-top: 0.4rem;
+  color: #f0f0f0;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.aboutus-hero:hover .hero-text {
-  color: #f5f5f5;
-  transform: translateY(-3px);
-}
-
-/* ===== Main Content ===== */
+/* ===== Section Transitions ===== */
 .aboutus-main {
   padding: 5rem 0 7rem 0;
+  position: relative;
+  background: #ffffff;
+}
+.aboutus-main::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom right, transparent 49%, #fff 50%);
 }
 
 .aboutus-content {
@@ -70,57 +110,40 @@ body {
   flex-wrap: wrap;
   align-items: flex-start;
 }
-
 .text {
   flex: 1 1 55%;
-  transition: color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 1.2s ease-in-out;
 }
-
 .text h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.6rem;
   margin-bottom: 1rem;
-  color: #222;
-  border-left: 4px solid #7f8c8d;
+  color: #0a1f44;
+  border-left: 6px solid #ffd166;
   padding-left: 14px;
 }
-
 .text h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 1.8rem;
   margin-top: 2.5rem;
   margin-bottom: 0.8rem;
-  color: #444;
+  color: #4364f7;
 }
-
 .text p {
   font-size: 1.1rem;
   margin-bottom: 1.2rem;
   color: #444;
 }
-
 .text ul {
   list-style-type: disc;
   padding-left: 24px;
-  color: #444;
   font-size: 1.1rem;
+  color: #333;
 }
-
-.text ul li {
-  margin-bottom: 0.7rem;
-  cursor: default;
-  transition: color 0.3s ease;
-}
-
 .text ul li:hover {
-  color: #000;
+  color: #0a1f44;
   font-weight: 600;
-}
-
-.text:hover {
-  color: #000;
-  transform: translateY(-3px);
 }
 
 /* ===== Image Styling ===== */
@@ -128,24 +151,20 @@ body {
   flex: 1 1 40%;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease;
+  animation: fadeInUp 1.5s ease-in-out;
 }
-
 .image img {
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
   border-radius: 12px;
 }
-
 .image:hover {
-  transform: scale(1.03);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* ===== Image Cards Below Main Image ===== */
+/* ===== Image Cards ===== */
 .image-cards {
   display: flex;
   gap: 1.5rem;
@@ -153,57 +172,48 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .card {
   flex: 1 1 45%;
-  background: linear-gradient(145deg, #ffffff, #f2f2f2); /* subtle card gradient */
+  background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-  text-align: center;
-  user-select: none;
+  border: 3px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #ffd166, #4364f7, #6fb1fc);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s ease;
 }
-
 .card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-  border-bottom: 1px solid #eee;
-  border-radius: 12px 12px 0 0;
 }
-
 .card figcaption {
   padding: 0.8rem 1rem;
   font-size: 1rem;
-  color: #333;
   font-weight: 600;
-  transition: color 0.3s ease;
+  color: #0a1f44;
 }
-
 .card:hover {
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.04) rotate(1deg);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
 }
 
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.card:hover figcaption {
-  color: #000;
-}
-
-/* ===== Call To Action Section ===== */
+/* ===== CTA Section ===== */
 .aboutus-cta {
   padding: 4rem 1.5rem;
   text-align: center;
-  border-top: 1px solid #ccc;
-  margin-top: 5rem;
-  background: linear-gradient(135deg, #74ebd5, #acb6e5); /* elegant pastel gradient */
+  background: linear-gradient(135deg, rgba(10,31,68,0.95), rgba(249,214,102,0.95));
+  position: relative;
+}
+.aboutus-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+  opacity: 0.2;
+  pointer-events: none; /* This allows clicks to pass through */
 }
 
 .aboutus-cta h2 {
@@ -211,86 +221,28 @@ body {
   font-size: 2.6rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: #222;
-  letter-spacing: 0.3px;
+  color: #fff;
 }
-
 .aboutus-cta p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  font-weight: 400;
-  color: #444;
+  color: #f0f0f0;
 }
 
 /* ===== Button Styling ===== */
 .btn {
-  background: linear-gradient(90deg, #4b6cb7, #182848); /* deep navy blue gradient */
-  color: #fff;
-  font-weight: 600;
+  background: linear-gradient(90deg, #ffd166, #ffae42);
+  color: #0a1f44;
+  font-weight: 700;
   font-size: 1.1rem;
   padding: 0.85rem 3rem;
   border-radius: 40px;
   text-decoration: none;
-  box-shadow: none;
-  display: inline-block;
-  transition: background 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-  user-select: none;
-  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255,193,7,0.4);
 }
-
-.btn:hover,
-.btn:focus {
-  background: linear-gradient(90deg, #182848, #4b6cb7);
-  outline: none;
-  transform: scale(1.05);
-}
-
-/* ===== Responsive Styles ===== */
-@media (max-width: 1024px) {
-  .aboutus-content {
-    flex-direction: column;
-  }
-  .text,
-  .image {
-    flex: 1 1 100%;
-  }
-  .aboutus-hero h1 {
-    font-size: 2.8rem;
-  }
-  .aboutus-hero p {
-    font-size: 1.1rem;
-  }
-  .aboutus-cta h2 {
-    font-size: 2.2rem;
-  }
-  .aboutus-cta p {
-    font-size: 1.1rem;
-  }
-  .btn {
-    font-size: 1rem;
-    padding: 0.75rem 2.5rem;
-  }
-  .card {
-    flex: 1 1 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .aboutus-hero h1 {
-    font-size: 2.2rem;
-  }
-  .aboutus-hero p {
-    font-size: 1rem;
-  }
-  .text h2 {
-    font-size: 2rem;
-  }
-  .text h3 {
-    font-size: 1.4rem;
-  }
-  .btn {
-    font-size: 0.95rem;
-    padding: 0.7rem 2rem;
-  }
+.btn:hover {
+  background: linear-gradient(90deg, #ffae42, #ffd166);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(255,193,7,0.6);
 }
